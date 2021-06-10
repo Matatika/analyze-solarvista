@@ -1,0 +1,52 @@
+version: datasets/v0.2
+source: Solarvista
+title: Work Orders Scheduled vs Attended Last 7 Days
+questions: How many work order were scheduled and attended for the last 7 days?
+description: |-
+   Work orders scheduled vs attended for the last 7 days.
+
+   - Quick Closed Counts as Attended
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "vw_daily_projects", 
+      "label": "Total Work Orders Scheduled vs Attended Last 7 Days",
+      "related_table": {
+         "columns": [
+            {"name": "date", "label": "Date", "description": "Date"}
+         ], 
+         "aggregates": [
+            {"name": "scheduled", "label": "Scheduled Work Orders", "description": "Scheduled Work Orders"},
+            {"name": "attended", "label": "Attended Work Orders", "description": "Attended Work Orders"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Work Orders"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   select
+      date_day "vw_daily_projects.date"
+      , case when sum(total_scheduled) isnull then 0 else sum(total_scheduled) end "vw_daily_projects.scheduled"
+      , case when sum(total_attended) isnull then 0 else sum(total_attended) end "vw_daily_projects.attended"
+   from vw_daily_projects
+   where date_day > current_date - interval '7' day
+   and date_day <= current_date
+   group by date_day
