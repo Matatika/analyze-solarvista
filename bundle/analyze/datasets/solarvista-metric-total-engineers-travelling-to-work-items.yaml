@@ -1,0 +1,40 @@
+version: datasets/v0.2
+source: Solarvista
+title: "Total Engineers Travelling to Work Items"
+questions: 'How many engineers are currently travelling to work items?'
+description: |-
+  Total number of engineers travelling to assigned work items.
+
+  - Work Item Current Stage 'TravellingTo' Only
+  
+  #Solarvista
+metadata: |-
+  {
+    "name": "fact_workitem",
+    "label": "Total Engineers Travelling to Work Items",
+    "related_table": {
+      "columns": [
+      ],
+      "aggregates": [
+        {"name": "total", "label": "Total Engineers Travelling to Work Items", "description": "Total Engineers Travelling to Work Items",
+          "links": [
+            {
+              "dataset": "engineer-average-travel-time-last-14-days"
+            }
+          ]
+        }
+      ]
+    }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+      "chartType": "treemap"
+    }
+  }
+query: |-
+  select 
+    count(fact_workitem.work_item_id) as "fact_workitem.total"
+  from fact_workitem
+  left join dim_project on dim_project.project_sk = fact_workitem.project_sk 
+  where fact_workitem.current_stage = 'TravellingTo'
