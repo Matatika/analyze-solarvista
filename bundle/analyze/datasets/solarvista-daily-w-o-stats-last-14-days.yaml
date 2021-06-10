@@ -1,52 +1,51 @@
-datasets:
-  solarvista-daily-w-o-stats-last-14-days:
-    source: Solarvista
-    title: Daily Work Order Stats Last 14 Days
-    questions: What are the aged work order stats over the last 14 days?
-    description: |- 
-      Work Order stats, including aged work orders in the table below the chart, for the last 14 days.
+version: datasets/v0.2  
+source: Solarvista
+title: Daily Work Order Stats Last 14 Days
+questions: What are the aged work order stats over the last 14 days?
+description: |- 
+  Work Order stats, including aged work orders in the table below the chart, for the last 14 days.
 
-      #Solarvista
-    metadata: |- 
-      {
-        "name": "vw_daily_projects", 
-        "label": "Daily Work Order Stats", 
-        "related_table": {
-          "columns": [
-            {"name": "report_year", "label": "Year", "description": "Year"},
-            {"name": "report_month", "label": "Month", "description": "Month"},
-            {"name": "report_day", "label": "Day", "description": "Day"}
-          ],
-          "aggregates": [
-            {"name":"total_open", "label": "Total Open W/Os", "description": "Open Work Orders"},
-            {"name": "total_created", "label": "W/Os Received", "description": "Work Orders received on this day"},
-            {"name": "total_closed", "label": "W/Os Completed", "description": "Work Orders completed on this day"},
-            {"name": "total_scheduled", "label": "W/Os Scheduled", "description": "Work Orders scheduled on this day"},
-            {"name": "total_attended", "label": "W/Os Attended", "description": "Work Orders attended on this day"},
-            {"name": "total_reactivated", "label": "W/Os Recalled", "description": "Work Orders recalled on this day"}
-          ]
-        }
-      }
-    visualisation: |- 
-      {"chartjs-chart": {"chartType": "bar"}}
-    query: |- 
-      SELECT "vw_daily_projects"."report_year" "vw_daily_projects.report_year"
-        ,"vw_daily_projects"."report_month" "vw_daily_projects.report_month"
-        ,"vw_daily_projects"."report_day" "vw_daily_projects.report_day"
-        ,COALESCE(SUM("vw_daily_projects"."total_created"),0) "vw_daily_projects.total_created"
-        ,COALESCE(SUM("vw_daily_projects"."total_closed"),0) "vw_daily_projects.total_closed"
-        ,COALESCE(SUM("vw_daily_projects"."total_open_older_than_14days"),0) "Aged W/O 14 Days"
-        ,COALESCE(SUM("vw_daily_projects"."total_open_older_than_7days"),0) "Aged W/O 7 Days"
-        ,COALESCE(SUM("vw_daily_projects"."total_not_working"),0) "OOA"
-        ,COALESCE(SUM("vw_daily_projects"."total_not_working_over_24_hrs"),0) "OOA O/24 Hours"
-        ,COALESCE(SUM("vw_daily_projects"."total_open"),0) "vw_daily_projects.total_open"
-        ,COALESCE(SUM("vw_daily_projects"."total_scheduled"),0) "vw_daily_projects.total_scheduled"
-        ,COALESCE(SUM("vw_daily_projects"."total_attended"),0) "vw_daily_projects.total_attended"
-        ,COALESCE(SUM("vw_daily_projects"."total_reactivated"),0) "vw_daily_projects.total_reactivated" 
-        FROM "vw_daily_projects" "vw_daily_projects"
-        WHERE "vw_daily_projects"."report_date" > current_date - interval '15' day  
-        AND vw_daily_projects.report_date < current_date
-        GROUP BY "vw_daily_projects.report_year","vw_daily_projects.report_month","vw_daily_projects.report_day"
-        ORDER BY "vw_daily_projects.report_year" ASC,
-        "vw_daily_projects.report_month" ASC,
-        "vw_daily_projects.report_day" ASC;
+  #Solarvista
+metadata: |- 
+  {
+    "name": "vw_daily_projects", 
+    "label": "Daily Work Order Stats", 
+    "related_table": {
+      "columns": [
+        {"name": "report_year", "label": "Year", "description": "Year"},
+        {"name": "report_month", "label": "Month", "description": "Month"},
+        {"name": "report_day", "label": "Day", "description": "Day"}
+      ],
+      "aggregates": [
+        {"name":"total_open", "label": "Total Open W/Os", "description": "Open Work Orders"},
+        {"name": "total_created", "label": "W/Os Received", "description": "Work Orders received on this day"},
+        {"name": "total_closed", "label": "W/Os Completed", "description": "Work Orders completed on this day"},
+        {"name": "total_scheduled", "label": "W/Os Scheduled", "description": "Work Orders scheduled on this day"},
+        {"name": "total_attended", "label": "W/Os Attended", "description": "Work Orders attended on this day"},
+        {"name": "total_reactivated", "label": "W/Os Recalled", "description": "Work Orders recalled on this day"}
+      ]
+    }
+  }
+visualisation: |- 
+  {"chartjs-chart": {"chartType": "bar"}}
+query: |- 
+  SELECT "vw_daily_projects"."report_year" "vw_daily_projects.report_year"
+    ,"vw_daily_projects"."report_month" "vw_daily_projects.report_month"
+    ,"vw_daily_projects"."report_day" "vw_daily_projects.report_day"
+    ,COALESCE(SUM("vw_daily_projects"."total_created"),0) "vw_daily_projects.total_created"
+    ,COALESCE(SUM("vw_daily_projects"."total_closed"),0) "vw_daily_projects.total_closed"
+    ,COALESCE(SUM("vw_daily_projects"."total_open_older_than_14days"),0) "Aged W/O 14 Days"
+    ,COALESCE(SUM("vw_daily_projects"."total_open_older_than_7days"),0) "Aged W/O 7 Days"
+    ,COALESCE(SUM("vw_daily_projects"."total_not_working"),0) "OOA"
+    ,COALESCE(SUM("vw_daily_projects"."total_not_working_over_24_hrs"),0) "OOA O/24 Hours"
+    ,COALESCE(SUM("vw_daily_projects"."total_open"),0) "vw_daily_projects.total_open"
+    ,COALESCE(SUM("vw_daily_projects"."total_scheduled"),0) "vw_daily_projects.total_scheduled"
+    ,COALESCE(SUM("vw_daily_projects"."total_attended"),0) "vw_daily_projects.total_attended"
+    ,COALESCE(SUM("vw_daily_projects"."total_reactivated"),0) "vw_daily_projects.total_reactivated" 
+    FROM "vw_daily_projects" "vw_daily_projects"
+    WHERE "vw_daily_projects"."report_date" > current_date - interval '15' day  
+    AND vw_daily_projects.report_date < current_date
+    GROUP BY "vw_daily_projects.report_year","vw_daily_projects.report_month","vw_daily_projects.report_day"
+    ORDER BY "vw_daily_projects.report_year" ASC,
+    "vw_daily_projects.report_month" ASC,
+    "vw_daily_projects.report_day" ASC;
