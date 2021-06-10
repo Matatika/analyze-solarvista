@@ -1,4 +1,4 @@
-version: dataset/v0.2
+version: datasets/v0.2
 source: Solarvista
 title: Engineers Available vs Unavailable Today
 questions: ‘How many engineers are available vs unavailable today?’
@@ -14,7 +14,7 @@ metadata: |-
          "columns": [
          ], 
          "aggregates": [
-            {"name": "total_available", "label": "Available Today", "description": "Total Available Today",},
+            {"name": "total_available", "label": "Available Today", "description": "Total Available Today"},
             {"name": "total_unavailable", "label": "Unavailable Today", "description": "Total Unavailable Today"}
          ], 
          "version": 1
