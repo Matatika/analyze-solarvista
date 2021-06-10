@@ -16,8 +16,7 @@ metadata: |-
          "aggregates": [
             {"name": "total_available", "label": "Available Today", "description": "Total Available Today"},
             {"name": "total_unavailable", "label": "Unavailable Today", "description": "Total Unavailable Today"}
-         ], 
-         "version": 1
+         ]
       }
    }
 visualisation: |-
