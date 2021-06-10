@@ -1,0 +1,60 @@
+version: datasets/v0.2
+source: Solarvista
+title: Revisit Work Items Last 7 Days
+questions:
+description: |-
+  Number of revisit work items for the last 7 days.
+
+  - Has 'Revisit' Tag
+  
+  #Solarvista
+metadata: |-
+  {
+      "name": "fact_workitem", 
+      "related_table": {
+        "columns": [
+            {"name": "schedule_start_date", "hidden": false, "label": "Date", "description": "Date"}
+        ], 
+        "aggregates": [
+          {"name": "total", "label": "Total Work Items", "description": "Total Work Items"}
+        ]
+      }
+  }
+visualisation: |-
+  {
+      "chartjs-chart": {
+          "chartType": "bar", 
+          "options": {
+            "scales": {
+                "xAxes": [{
+                  "stacked": true,
+                  "scaleLabel": {
+                    "display": true,
+                    "labelString": "Date"
+                  }
+                }],
+                "yAxes": [{
+                  "stacked": true,
+                  "ticks": {
+                      "beginAtZero": true
+                  },
+                  "scaleLabel": {
+                      "display": true,
+                      "labelString": "Total Work Items"
+                  }
+                }]
+            }
+          }
+      }
+    }
+query: |-
+  select
+    fact_workitem.schedule_start_date as "fact_workitem.schedule_start_date"
+    , count(distinct(fact_workitem.work_item_id)) as "fact_workitem.total"
+  from fact_workitem
+  left join dim_project on dim_project.project_sk = fact_workitem.project_sk
+  left join dim_territory on dim_territory.territory_sk = fact_workitem.territory_sk
+  where fact_workitem.tags ? 'Revisit'
+  and fact_workitem.schedule_start_date > current_date - interval '7' day
+  and fact_workitem.schedule_start_date <= current_date
+  group by fact_workitem.schedule_start_date::date
