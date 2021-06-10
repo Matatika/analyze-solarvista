@@ -1,0 +1,50 @@
+version: datasets/v0.2
+source: Solarvista
+title: Items Not Working By Day
+questions: How long have items not been working?
+description: |-
+   The total items not working and when the fault was raised.
+
+   - Operational Status 'Not Working' Only
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "dim_project", 
+      "label": "Items Not Working By Day",
+      "related_table": {
+         "columns": [
+            {"name": "date", "label": "Date", "description": "Date"}
+         ], 
+         "aggregates": [
+            {"name": "nontrading", "label": "Not Trading", "description": "Not Trading"}
+         ]
+      } 
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Work Orders"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   SELECT dim_project.createdon::date "dim_project.date"
+      , COALESCE(count(distinct reference),0) "dim_project.nontrading"
+   FROM dim_project
+   WHERE dim_project.status = 'Active'
+   AND dim_project.operationalstatus = 'Not Working'
+   GROUP BY dim_project.createdon::date
+   ORDER BY dim_project.createdon::date
