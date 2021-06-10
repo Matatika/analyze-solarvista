@@ -1,0 +1,49 @@
+version: datasets/v0.2
+source: Solarvista
+title: Not Working Items By Site
+questions: How many items are not working at each site?
+description: |-
+   Total number of not working items by site.
+
+   - Operational Status 'Not Working' Only
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "dim_project", 
+      "label": "Not Working Items By Site", 
+      "related_table": {
+         "columns": [
+            {"name": "site", "label": "Site Name", "description": "Site Name"}
+         ], 
+         "aggregates": [
+            {"name": "site_count", "label": "Site Count", "description": "Site Count"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   select
+      dim_site."name" "dim_project.site"
+      , COALESCE(count(distinct(dim_project.reference)),0) "dim_project.site_count"
+   from dim_project
+   left join fact_workitem on dim_project.project_sk = fact_workitem.project_sk
+   left join dim_site on dim_site.site_sk = fact_workitem.site_sk
+   WHERE dim_project.status = 'Active'
+   AND dim_project.operationalstatus = 'Not Working'
+   group by dim_site."name"
+   order by dim_site."name"
