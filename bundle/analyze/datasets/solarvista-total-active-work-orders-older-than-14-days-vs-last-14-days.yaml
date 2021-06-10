@@ -1,0 +1,40 @@
+version: datasets/v0.2
+source: Solarvista
+title: "Active W/Os Older Than 14 Days vs Last 14 Days"
+questions:
+description: |-
+   Active W/Os older than 14 days vs last 14 days
+
+   - Status 'Active' Only
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "dim_project", 
+      "label": "Active W/Os Older Than 14 Days vs Last 14 Days", 
+      "related_table": {
+         "columns": [
+         ], 
+         "aggregates": [
+            {"name": "active_last_14_day", "label": "Active W/Os Created in Last 14 Days", "description": "Active W/Os Created in Last 14 Days"}, 
+            {"name": "active_over_14_days", "label": "Active W/Os Older than Last 14 Days", "description": "Active W/Os Older than Last 14 Days"}
+         ], 
+         "version": 1
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "doughnut"
+      }
+   }
+query: |-
+   select 
+      (count(distinct(dim_project.project_sk))) as "dim_project.active_last_14_day"
+      , (select (count(distinct(dim_project.project_sk)))
+   from dim_project
+   where dim_project.createdon < now() - interval '14' day
+   and dim_project.status = 'Active') as "dim_project.active_over_14_days"
+   from dim_project
+   where dim_project.createdon >= now() - interval '14' day
+   and dim_project.status = 'Active'
