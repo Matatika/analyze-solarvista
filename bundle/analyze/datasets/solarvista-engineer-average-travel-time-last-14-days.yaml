@@ -1,0 +1,79 @@
+version: datasets/v0.2
+source: Solarvista
+title: Engineer Average Travel Time Last 14 Days
+questions: ‘How much of our engineers time is spent travelling?’
+description: |-
+   This insight shows the day by day breakdown of time spent travelling vs. working.
+
+   Data includes all work items that have a TravellingTo timestamp.
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "vw_workitem_stages", 
+      "label": "Engineer average travel time last 14 days", 
+      "related_table": {
+         "columns": [
+            {"name": "date_year", "label": "Year", "description": "Year"}, 
+            {"name": "date_month_of_year", "label": "Month", "description": "Month"}, 
+            {"name": "date_day_of_month", "label": "Day", "description": "Day"}, 
+            {"name": "day_of_week_name", "label": "Day of week name", "description": "Day of week name"}
+         ], 
+         "aggregates": [
+            {"name": "travel_avg", "label": "Avg. Travel time / work item", "description": "Average minutes Travel time per work item"},
+            {"name": "work_avg", "label": "Avg. Work time / work item", "description": "Average minutes Work time per work item"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+               "scales": {
+                  "yAxes": [{
+                     "ticks": {
+                        "beginAtZero": true
+                     },
+                     "scaleLabel": {
+                        "display": true,
+                        "labelString": "Time in Minutes"
+                     }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   select
+      date_year "vw_workitem_stages.date_year",
+      date_month_of_year "vw_workitem_stages.date_month_of_year",
+      date_day_of_month "vw_workitem_stages.date_day_of_month",
+      day_of_week_name "vw_workitem_stages.day_of_week_name",
+      round( (total_travel_time / travel_count)::numeric, 0) "vw_workitem_stages.travel_avg",
+      round( (total_work_time / work_count)::numeric, 0) "vw_workitem_stages.work_avg",
+      total_travel_time,
+      travel_count,
+      total_work_time,
+      work_count
+   from (
+      select
+         date_year,
+         date_month_of_year,
+         date_day_of_month,
+         min(day_of_week_name) as day_of_week_name,
+         sum((DATE_PART('day', preworking_timestamp - travellingto_timestamp) * 24 + 
+            DATE_PART('hour', preworking_timestamp - travellingto_timestamp)) * 60 +
+            DATE_PART('minute', preworking_timestamp - travellingto_timestamp)) as total_travel_time,
+         count(preworking_timestamp) as travel_count,
+         sum((DATE_PART('day', postworking_timestamp - preworking_timestamp) * 24 + 
+            DATE_PART('hour', postworking_timestamp - preworking_timestamp)) * 60 +
+            DATE_PART('minute', postworking_timestamp - preworking_timestamp)) as total_work_time,
+         count(postworking_timestamp) as work_count
+      FROM vw_workitem_stages 
+      WHERE vw_workitem_stages.date_day >= (current_date - interval '14' day)
+         AND vw_workitem_stages.date_day < current_date
+         AND vw_workitem_stages.travellingto_timestamp notnull
+         GROUP BY date_year, date_month_of_year, date_day_of_month
+         ORDER BY date_year ASC, date_month_of_year ASC, date_day_of_month ASC
+   ) as work_items
