@@ -1,0 +1,40 @@
+version: datasets/v0.2
+source: Solarvista
+title: "Work Orders Scheduled vs Attended Today"
+questions: 'How many work orders have been scheduled and attended today?'
+description: |-
+  Work orders scheduled vs attended today.
+
+  - Quick Closed Counts as Attended
+
+  #Solarvista
+metadata: |-
+  {
+    "name": "vw_daily_projects",
+    "label": "Total Work Orders Scheduled vs Attended",
+    "related_table": {
+        "columns": [
+        ],
+        "aggregates": [
+        {"name": "scheduled", "label": "Scheduled Work Orders", "description": "Scheduled Work Orders"},
+        {"name": "attended", "label": "Attended Work Orders", "description": "Attended Work Orders"}
+        ]
+      }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+      "chartType": "doughnut",
+      "options": {
+        "plugins": { "datalabels": { "display": true } }
+      }
+    }
+  }
+query: |-
+  select
+    case when sum(total_scheduled) isnull then 0 else sum(total_scheduled) end "vw_daily_projects.scheduled"
+    , case when sum(total_attended) isnull then 0 else sum(total_attended) end "vw_daily_projects.attended"
+  from vw_daily_projects
+  where date_day = current_date
+  group by date_day
+
