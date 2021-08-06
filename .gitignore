@@ -1,0 +1,9 @@
+# Virtual Enviroments
+/venv
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+
+# Converted HTML Datasets
+*.html
+html_charts/
