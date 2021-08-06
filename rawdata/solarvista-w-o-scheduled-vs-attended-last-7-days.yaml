@@ -1,0 +1,8 @@
+solarvista-w-o-scheduled-vs-attended-last-7-days: |-
+  [{"vw_daily_projects.date": "2021-06-01", "vw_daily_projects.scheduled": 112, "vw_daily_projects.attended": "98"},
+  {"vw_daily_projects.date": "2021-06-02", "vw_daily_projects.scheduled": 95, "vw_daily_projects.attended": "88"},
+  {"vw_daily_projects.date": "2021-06-03", "vw_daily_projects.scheduled": 83, "vw_daily_projects.attended": "82"},
+  {"vw_daily_projects.date": "2021-06-04", "vw_daily_projects.scheduled": 117, "vw_daily_projects.attended": "104"},
+  {"vw_daily_projects.date": "2021-06-05", "vw_daily_projects.scheduled": 109, "vw_daily_projects.attended": "101"},
+  {"vw_daily_projects.date": "2021-06-06", "vw_daily_projects.scheduled": 103, "vw_daily_projects.attended": "100"},
+  {"vw_daily_projects.date": "2021-06-07", "vw_daily_projects.scheduled": 106, "vw_daily_projects.attended": "96"}]

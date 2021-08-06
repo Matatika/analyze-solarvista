@@ -1,0 +1,2 @@
+solarvista-total-active-work-orders-older-than-14-days-vs-last-14-days: |-
+  [{"dim_project.active_last_14_day": 418, "dim_project.active_over_14_days": 740}]
