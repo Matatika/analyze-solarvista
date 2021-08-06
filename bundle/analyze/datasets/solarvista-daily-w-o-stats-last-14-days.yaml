@@ -21,8 +21,7 @@ metadata: |-
         {"name": "total_created", "label": "W/Os Received", "description": "Work Orders received on this day"},
         {"name": "total_closed", "label": "W/Os Completed", "description": "Work Orders completed on this day"},
         {"name": "total_scheduled", "label": "W/Os Scheduled", "description": "Work Orders scheduled on this day"},
-        {"name": "total_attended", "label": "W/Os Attended", "description": "Work Orders attended on this day"},
-        {"name": "total_reactivated", "label": "W/Os Recalled", "description": "Work Orders recalled on this day"}
+        {"name": "total_attended", "label": "W/Os Attended", "description": "Work Orders attended on this day"}
       ]
     }
   }
@@ -34,14 +33,7 @@ query: |-
     ,"vw_daily_projects"."report_day" "vw_daily_projects.report_day"
     ,COALESCE(SUM("vw_daily_projects"."total_created"),0) "vw_daily_projects.total_created"
     ,COALESCE(SUM("vw_daily_projects"."total_closed"),0) "vw_daily_projects.total_closed"
-    ,COALESCE(SUM("vw_daily_projects"."total_open_older_than_14days"),0) "Aged W/O 14 Days"
-    ,COALESCE(SUM("vw_daily_projects"."total_open_older_than_7days"),0) "Aged W/O 7 Days"
-    ,COALESCE(SUM("vw_daily_projects"."total_not_working"),0) "OOA"
-    ,COALESCE(SUM("vw_daily_projects"."total_not_working_over_24_hrs"),0) "OOA O/24 Hours"
     ,COALESCE(SUM("vw_daily_projects"."total_open"),0) "vw_daily_projects.total_open"
-    ,COALESCE(SUM("vw_daily_projects"."total_scheduled"),0) "vw_daily_projects.total_scheduled"
-    ,COALESCE(SUM("vw_daily_projects"."total_attended"),0) "vw_daily_projects.total_attended"
-    ,COALESCE(SUM("vw_daily_projects"."total_reactivated"),0) "vw_daily_projects.total_reactivated" 
     FROM "vw_daily_projects" "vw_daily_projects"
     WHERE "vw_daily_projects"."report_date" > current_date - interval '15' day  
     AND vw_daily_projects.report_date < current_date
