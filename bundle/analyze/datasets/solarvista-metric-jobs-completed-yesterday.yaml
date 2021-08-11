@@ -4,6 +4,8 @@ source: null
 questions: ‘How many jobs did we complete yesterday?’
 description: |-
    Number of jobs completed yesterday.
+
+   #Solarvista
 metadata: |-
    {
       "name": "fact_workitem", 
