@@ -1,9 +1,9 @@
 version: datasets/v0.2
 source: null
-title: Work Orders Scheduled vs Attended Last 7 Days
-questions: How many work order were scheduled and attended for the last 7 days?
+title: Projects Scheduled vs Attended Last 7 Days
+questions: How many projects were scheduled and attended for the last 7 days?
 description: |-
-   Work orders scheduled vs attended for the last 7 days.
+   Projects scheduled vs attended for the last 7 days.
 
    - Quick Closed Counts as Attended
 
@@ -11,14 +11,14 @@ description: |-
 metadata: |-
    {
       "name": "vw_daily_projects", 
-      "label": "Total Work Orders Scheduled vs Attended Last 7 Days",
+      "label": "Total Projects Scheduled vs Attended Last 7 Days",
       "related_table": {
          "columns": [
             {"name": "date", "label": "Date", "description": "Date"}
          ], 
          "aggregates": [
-            {"name": "scheduled", "label": "Scheduled Work Orders", "description": "Scheduled Work Orders"},
-            {"name": "attended", "label": "Attended Work Orders", "description": "Attended Work Orders"}
+            {"name": "scheduled", "label": "Scheduled Projects", "description": "Scheduled Projects"},
+            {"name": "attended", "label": "Attended Projects", "description": "Attended Projects"}
          ]
       }
    }
@@ -31,7 +31,7 @@ visualisation: |-
                "yAxes": [{
                   "scaleLabel": {
                      "display": true,
-                     "labelString": "Work Orders"
+                     "labelString": "Projects"
                   },
                   "ticks": {
                      "beginAtZero": true

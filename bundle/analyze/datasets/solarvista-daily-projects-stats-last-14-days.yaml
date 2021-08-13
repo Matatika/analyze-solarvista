@@ -1,15 +1,15 @@
 version: datasets/v0.2  
 source: null
-title: Daily Work Order Stats Last 14 Days
-questions: What are the aged work order stats over the last 14 days?
+title: Daily Project Stats Last 14 Days
+questions: What are the aged project stats over the last 14 days?
 description: |- 
-  Work Order stats, including aged work orders in the table below the chart, for the last 14 days.
+  Project stats, including aged projects in the table below the chart, for the last 14 days.
 
   #Solarvista
 metadata: |- 
   {
     "name": "vw_daily_projects", 
-    "label": "Daily Work Order Stats", 
+    "label": "Daily project Stats", 
     "related_table": {
       "columns": [
         {"name": "report_year", "label": "Year", "description": "Year"},
@@ -17,11 +17,11 @@ metadata: |-
         {"name": "report_day", "label": "Day", "description": "Day"}
       ],
       "aggregates": [
-        {"name":"total_open", "label": "Total Open W/Os", "description": "Open Work Orders"},
-        {"name": "total_created", "label": "W/Os Received", "description": "Work Orders received on this day"},
-        {"name": "total_closed", "label": "W/Os Completed", "description": "Work Orders completed on this day"},
-        {"name": "total_scheduled", "label": "W/Os Scheduled", "description": "Work Orders scheduled on this day"},
-        {"name": "total_attended", "label": "W/Os Attended", "description": "Work Orders attended on this day"}
+        {"name":"total_open", "label": "Total Open W/Os", "description": "Open projects"},
+        {"name": "total_created", "label": "W/Os Received", "description": "Projects received on this day"},
+        {"name": "total_closed", "label": "W/Os Completed", "description": "Projects completed on this day"},
+        {"name": "total_scheduled", "label": "W/Os Scheduled", "description": "Projects scheduled on this day"},
+        {"name": "total_attended", "label": "W/Os Attended", "description": "Projects attended on this day"}
       ]
     }
   }

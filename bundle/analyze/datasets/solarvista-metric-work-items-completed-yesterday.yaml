@@ -1,20 +1,20 @@
 version: datasets/v0.2
-title: "Jobs Competed Yesterday"
+title: "Work Items Competed Yesterday"
 source: null
-questions: ‘How many jobs did we complete yesterday?’
+questions: ‘How many work items did we complete yesterday?’
 description: |-
-   Number of jobs completed yesterday.
+   Number of work items completed yesterday.
 
    #Solarvista
 metadata: |-
    {
       "name": "fact_workitem", 
-      "label": "Jobs Competed Yesterday", 
+      "label": "Work Items Competed Yesterday", 
       "related_table": {
          "columns": [
          ], 
          "aggregates": [
-            {"name": "jobs_completed", "label": "Jobs Completed", "description": "Jobs Completed"}
+            {"name": "work_items_completed", "label": "Work Items Completed", "description": "Work Items Completed"}
          ]
       }
    }
@@ -26,7 +26,7 @@ visualisation: |-
    }
 query: |-
    SELECT
-      COUNT(*) "fact_workitem.jobs_completed"
+      COUNT(*) "fact_workitem.work_items_completed"
    FROM fact_workitem
    WHERE is_completed = true
    AND last_modified::date = current_date

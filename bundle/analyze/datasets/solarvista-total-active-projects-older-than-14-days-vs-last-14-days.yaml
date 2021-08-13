@@ -1,9 +1,9 @@
 version: datasets/v0.2
 source: null
-title: "Active W/Os Older Than 14 Days vs Last 14 Days"
+title: "Active Projects Older Than 14 Days vs Last 14 Days"
 questions:
 description: |-
-   Active W/Os older than 14 days vs last 14 days
+   Active projects older than 14 days vs last 14 days
 
    - Status 'Active' Only
 
@@ -11,13 +11,13 @@ description: |-
 metadata: |-
    {
       "name": "dim_project", 
-      "label": "Active W/Os Older Than 14 Days vs Last 14 Days", 
+      "label": "Active Projects Older Than 14 Days vs Last 14 Days", 
       "related_table": {
          "columns": [
          ], 
          "aggregates": [
-            {"name": "active_last_14_day", "label": "Active W/Os Created in Last 14 Days", "description": "Active W/Os Created in Last 14 Days"}, 
-            {"name": "active_over_14_days", "label": "Active W/Os Older than Last 14 Days", "description": "Active W/Os Older than Last 14 Days"}
+            {"name": "active_last_14_day", "label": "Active Projects Created in Last 14 Days", "description": "Active Projects Created in Last 14 Days"}, 
+            {"name": "active_over_14_days", "label": "Active Projects Older than Last 14 Days", "description": "Active Projects Older than Last 14 Days"}
          ], 
          "version": 1
       }

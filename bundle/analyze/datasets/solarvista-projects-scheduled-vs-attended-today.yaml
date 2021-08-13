@@ -1,9 +1,9 @@
 version: datasets/v0.2
 source: null
-title: "Work Orders Scheduled vs Attended Today"
-questions: 'How many work orders have been scheduled and attended today?'
+title: "Projects Scheduled vs Attended Today"
+questions: 'How many projects have been scheduled and attended today?'
 description: |-
-  Work orders scheduled vs attended today.
+  Projects scheduled vs attended today.
 
   - Quick Closed Counts as Attended
 
@@ -11,13 +11,13 @@ description: |-
 metadata: |-
   {
     "name": "vw_daily_projects",
-    "label": "Total Work Orders Scheduled vs Attended",
+    "label": "Total Projects Scheduled vs Attended",
     "related_table": {
         "columns": [
         ],
         "aggregates": [
-        {"name": "scheduled", "label": "Scheduled Work Orders", "description": "Scheduled Work Orders"},
-        {"name": "attended", "label": "Attended Work Orders", "description": "Attended Work Orders"}
+        {"name": "scheduled", "label": "Scheduled Projects", "description": "Scheduled Projects"},
+        {"name": "attended", "label": "Attended Projects", "description": "Attended Projects"}
         ]
       }
   }
