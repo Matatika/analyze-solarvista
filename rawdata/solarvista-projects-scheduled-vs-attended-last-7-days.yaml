@@ -1,4 +1,4 @@
-solarvista-w-o-scheduled-vs-attended-last-7-days: |-
+solarvista-projects-scheduled-vs-attended-last-7-days: |-
   [{"vw_daily_projects.date": "2021-06-01", "vw_daily_projects.scheduled": 112, "vw_daily_projects.attended": "98"},
   {"vw_daily_projects.date": "2021-06-02", "vw_daily_projects.scheduled": 95, "vw_daily_projects.attended": "88"},
   {"vw_daily_projects.date": "2021-06-03", "vw_daily_projects.scheduled": 83, "vw_daily_projects.attended": "82"},
