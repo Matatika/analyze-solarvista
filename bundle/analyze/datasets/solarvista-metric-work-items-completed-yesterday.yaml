@@ -28,5 +28,5 @@ query: |-
    SELECT
       COUNT(*) "fact_workitem.work_items_completed"
    FROM fact_workitem
-   WHERE is_completed = true
+   WHERE current_stage = 'Closed'
    AND last_modified::date = current_date
