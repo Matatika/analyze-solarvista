@@ -5,8 +5,6 @@ questions: 'How many projects have been scheduled and attended today?'
 description: |-
   Projects scheduled vs attended today.
 
-  - Quick Closed Counts as Attended
-
   #Solarvista
 metadata: |-
   {
