@@ -1,0 +1,51 @@
+version: datasets/v0.2
+source: null
+title: Top 10 Engineers by Work Items Completed Last 7 Days
+questions: Who closed the most Work Items in the last 7 days?
+description: |-
+   Top 10 engineers by the amount of work items completed in the last 7 days.
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "fact_workitem", 
+      "label": "Top 10 Engineers by Work Items Completed Last 7 Days",
+      "related_table": {
+         "columns": [
+            {"name": "user_display_name", "label": "Engineer's Name", "description": "Engineer's Name"}
+         ], 
+         "aggregates": [
+            {"name": "total_completed_wi", "label": "Completed Work Items", "description": "Completed Work Items"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Completed Work Items"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   SELECT
+      MIN(display_name) "fact_workitem.user_display_name"
+      , COUNT(*) "fact_workitem.total_completed_wi"
+   FROM fact_workitem
+   LEFT JOIN dim_user ON dim_user.users_sk = fact_workitem.users_sk
+   WHERE current_stage = 'Closed'
+   AND last_modified::date = current_date - interval '7' day
+   GROUP BY user_id
+   ORDER BY "fact_workitem.total_completed_wi" DESC 
+   LIMIT 10;
