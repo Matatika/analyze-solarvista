@@ -1,0 +1,52 @@
+version: datasets/v0.2
+source: null
+title: Revenue by Engineer Last 7 Days
+questions: How much revenue did each engineer make over the last 7 days?
+description: |-
+   Revenue made by engineer over the last 7 full days.
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "fact_workitem", 
+      "label": "Revenue by Engineer Last 7 Days",
+      "related_table": {
+         "columns": [
+            {"name": "name", "label": "Engineer Name", "description": "Engineer Name"}
+         ], 
+         "aggregates": [
+            {"name": "revenue", "label": "Revenue", "description": "Revenue"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Revenue"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   SELECT
+      display_name "fact_workitem.name"
+      , SUM(charge) "fact_workitem.revenue"
+   FROM fact_workitem fw
+   LEFT JOIN dim_user du ON du.users_sk = fw.users_sk
+   WHERE charge > 0
+   AND report_date >= current_date - interval '7' day
+   AND report_date < current_date
+   GROUP BY display_name
+   ORDER BY "fact_workitem.revenue" DESC
+

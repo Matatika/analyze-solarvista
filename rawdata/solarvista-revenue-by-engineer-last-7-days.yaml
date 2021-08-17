@@ -1,0 +1,8 @@
+solarvista-revenue-by-engineer-last-7-days: |-
+  [{"fact_workitem.name": "Bill Sprout", "fact_workitem.revenue": 4519},
+  {"fact_workitem.name": "Violet Moore", "fact_workitem.revenue": 4017},
+  {"fact_workitem.name": "Manoj Anand", "fact_workitem.revenue": 3407},
+  {"fact_workitem.name": "Alice Cullen", "fact_workitem.revenue": 3311},
+  {"fact_workitem.name": "Austin Wells", "fact_workitem.revenue": 2022},
+  {"fact_workitem.name": "Maria Harper", "fact_workitem.revenue": 1871},
+  {"fact_workitem.name": "Clive Winters", "fact_workitem.revenue": 1540}]
