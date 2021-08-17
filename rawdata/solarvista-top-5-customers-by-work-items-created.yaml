@@ -1,0 +1,6 @@
+solarvista-top-5-customers-by-work-items-created: |-
+  [{"fact_workitem.customer_name": "The Lamb", "fact_workitem.work_item_total": 118},
+  {"fact_workitem.customer_name": "The Goat", "fact_workitem.work_item_total": 97},
+  {"fact_workitem.customer_name": "The Bull", "fact_workitem.work_item_total": 73},
+  {"fact_workitem.customer_name": "The World's End", "fact_workitem.work_item_total": 55},
+  {"fact_workitem.customer_name": "The Swan", "fact_workitem.work_item_total": 29}]
