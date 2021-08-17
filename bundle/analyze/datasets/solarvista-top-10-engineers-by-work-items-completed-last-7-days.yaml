@@ -3,7 +3,7 @@ source: null
 title: Top 10 Engineers by Work Items Completed Last 7 Days
 questions: Who closed the most Work Items in the last 7 days?
 description: |-
-   Top 10 engineers by the amount of work items completed in the last 7 days.
+   Top 10 engineers by the amount of work items completed in the last full 7 days.
 
    #Solarvista
 metadata: |-

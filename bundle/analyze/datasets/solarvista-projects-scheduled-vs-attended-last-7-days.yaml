@@ -3,7 +3,7 @@ source: null
 title: Projects Scheduled vs Attended Last 7 Days
 questions: How many projects were scheduled and attended for the last 7 days?
 description: |-
-   Projects scheduled vs attended for the last 7 days.
+   Projects scheduled vs attended for the last full 7 days.
 
    #Solarvista
 metadata: |-

@@ -3,7 +3,7 @@ source: null
 title: Daily Project Stats Last 14 Days
 questions: What are the aged project stats over the last 14 days?
 description: |- 
-  Project stats, including aged projects in the table below the chart, for the last 14 days.
+  Project stats, including aged projects in the table below the chart, for the last full 14 days.
 
   #Solarvista
 metadata: |- 
