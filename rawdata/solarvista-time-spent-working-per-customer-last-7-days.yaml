@@ -1,0 +1,5 @@
+solarvista-time-spent-working-per-customer-last-7-days: |-
+ [{"fact_workitem.customer_name": "The Lamb", "fact_workitem.work_hours": 91},
+ {"fact_workitem.customer_name": "The Goat", "fact_workitem.work_hours": 44},
+ {"fact_workitem.customer_name": "The Bull", "fact_workitem.work_hours": 41},
+ {"fact_workitem.customer_name": "The Swan", "fact_workitem.work_hours": 35}]

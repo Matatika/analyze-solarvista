@@ -1,0 +1,53 @@
+version: datasets/v0.2
+source: null
+title: Time Working for each Customer Last 7 Days
+questions: How much time did our engineers spend working for each customer in the last 7 days?
+description: |-
+   Time spent working for each customer in the last 7 full days.
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "fact_workitem", 
+      "label": "Time Working for each Customer Last 7 Days",
+      "related_table": {
+         "columns": [
+            {"name": "customer_name", "label": "Customer", "description": "Customer"}
+         ], 
+         "aggregates": [
+            {"name": "work_hours", "label": "Working Hours", "description": "Working Hours"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Working Hours"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   SELECT
+      name "fact_workitem.customer_name"
+      , sum(duration_hours) "fact_workitem.work_hours"
+   FROM fact_workitem fw
+   LEFT JOIN dim_customer dc ON dc.customer_sk = fw.customer_sk
+   WHERE duration_hours > 0
+   AND report_date >= current_date - interval '7' day
+   AND report_date < current_date
+   GROUP BY name
+   ORDER BY "fact_workitem.work_hours" DESC
+
+
