@@ -1,0 +1,5 @@
+solarvista-revenue-by-customer-last-7-days: |-
+ [{"fact_workitem.customer_name": "The Lamb", "fact_workitem.revenue": 9122},
+ {"fact_workitem.customer_name": "The Bull", "fact_workitem.revenue": 5044},
+ {"fact_workitem.customer_name": "The Goat", "fact_workitem.revenue": 3602},
+ {"fact_workitem.customer_name": "The Swan", "fact_workitem.revenue": 2919}]

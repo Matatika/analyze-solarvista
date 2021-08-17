@@ -1,0 +1,53 @@
+version: datasets/v0.2
+source: null
+title: Revenue by Customer Last 7 Days
+questions: How much revenue did we make from each customer over the last 7 days?
+description: |-
+   Revenue from each customer over the last 7 full days.
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "fact_workitem", 
+      "label": "Revenue by Customer Last 7 Days",
+      "related_table": {
+         "columns": [
+            {"name": "customer_name", "label": "Customer", "description": "Customer"}
+         ], 
+         "aggregates": [
+            {"name": "revenue", "label": "Revenue", "description": "Revenue"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Revenue"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   SELECT
+      name "fact_workitem.customer_name"
+      , SUM(charge) "fact_workitem.revenue"
+   FROM fact_workitem fw 
+   LEFT JOIN dim_customer dc ON dc.customer_sk = fw.customer_sk
+   WHERE charge > 0
+   AND report_date >= current_date - interval '7' day
+   AND report_date < current_date
+   GROUP BY name
+   ORDER BY "fact_workitem.revenue" DESC
+
+
