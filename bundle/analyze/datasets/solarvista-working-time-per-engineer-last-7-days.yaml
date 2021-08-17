@@ -1,0 +1,52 @@
+version: datasets/v0.2
+source: null
+title: Working Time by Engineer Last 7 Days
+questions: How much time did each engineer spend working in the last 7 days?
+description: |-
+   Working time by engineer over the last 7 full days.
+
+   #Solarvista
+metadata: |-
+   {
+      "name": "fact_workitem", 
+      "label": "Working Time by Engineer Last 7 Days",
+      "related_table": {
+         "columns": [
+            {"name": "name", "label": "Engineer Name", "description": "Engineer Name"}
+         ], 
+         "aggregates": [
+            {"name": "work_hours", "label": "Working Hours", "description": "Working Hours"}
+         ]
+      }
+   }
+visualisation: |-
+   {
+      "chartjs-chart": {
+         "chartType": "bar",
+         "options": {
+            "scales": {
+               "yAxes": [{
+                  "scaleLabel": {
+                     "display": true,
+                     "labelString": "Working Hours"
+                  },
+                  "ticks": {
+                     "beginAtZero": true
+                  }
+               }]
+            }
+         }
+      }
+   }
+query: |-
+   SELECT
+      display_name "fact_workitem.name"
+      , SUM(duration_hours) "fact_workitem.work_hours"
+   FROM fact_workitem fw
+   LEFT JOIN dim_user du ON du.users_sk = fw.users_sk
+   WHERE duration_hours > 0
+   AND report_date >= current_date - interval '7' day
+   AND report_date < current_date
+   GROUP BY display_name
+   ORDER BY "fact_workitem.work_hours" desc
+

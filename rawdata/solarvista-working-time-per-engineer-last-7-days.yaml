@@ -1,0 +1,8 @@
+solarvista-working-time-per-engineer-last-7-days: |-
+  [{"fact_workitem.name": "Bill Sprout", "fact_workitem.work_hours": 42},
+  {"fact_workitem.name": "Manoj Anand", "fact_workitem.work_hours": 39},
+  {"fact_workitem.name": "Violet Moore", "fact_workitem.work_hours": 36},
+  {"fact_workitem.name": "Austin Wells", "fact_workitem.work_hours": 27},
+  {"fact_workitem.name": "Alice Cullen", "fact_workitem.work_hours": 26},
+  {"fact_workitem.name": "Maria Harper", "fact_workitem.work_hours": 22},
+  {"fact_workitem.name": "Clive Winters", "fact_workitem.work_hours": 19}]
