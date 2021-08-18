@@ -11,14 +11,14 @@ description: |-
 metadata:
 visualisation:
 query: |-
-  select
+  SELECT
     display_name "Name"
-    , count(work_item_id) "Work Items Completed"
-    , sum(charge) "Revenue"
-  from fact_workitem fw 
-  left join dim_user du on du.users_sk = fw.users_sk
-  where current_stage = 'Closed'
-  and report_date >= current_date - interval '14' day
-  and report_date < current_date
-  group by display_name
-  order by "Work Items Completed"
+    , COUNT(work_item_id) "Work Items Completed"
+    , SUM(charge) "Revenue"
+  FROM fact_workitem fw 
+  LEFT JOIN dim_user du on du.users_sk = fw.users_sk
+  WHERE current_stage = 'Closed'
+  AND report_date >= current_date - interval '14' day
+  AND report_date < current_date
+  GROUP BY display_name
+  ORDER BY "Work Items Completed" DESC
