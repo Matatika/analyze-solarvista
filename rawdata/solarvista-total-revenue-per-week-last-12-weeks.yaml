@@ -1,0 +1,13 @@
+solarvista-total-revenue-per-week-last-12-weeks: |-
+  [{"fact_workitem.week_start_date": "2021-01-11", "fact_workitem.revenue": 29109},
+  {"fact_workitem.week_start_date": "2021-01-18", "fact_workitem.revenue": 38672},
+  {"fact_workitem.week_start_date": "2021-01-25", "fact_workitem.revenue": 35811},
+  {"fact_workitem.week_start_date": "2021-02-01", "fact_workitem.revenue": 33904},
+  {"fact_workitem.week_start_date": "2021-02-08", "fact_workitem.revenue": 31006},
+  {"fact_workitem.week_start_date": "2021-02-15", "fact_workitem.revenue": 32863},
+  {"fact_workitem.week_start_date": "2021-02-22", "fact_workitem.revenue": 33548},
+  {"fact_workitem.week_start_date": "2021-03-01", "fact_workitem.revenue": 33121},
+  {"fact_workitem.week_start_date": "2021-03-08", "fact_workitem.revenue": 34217},
+  {"fact_workitem.week_start_date": "2021-03-15", "fact_workitem.revenue": 32087},
+  {"fact_workitem.week_start_date": "2021-03-22", "fact_workitem.revenue": 29419},
+  {"fact_workitem.week_start_date": "2021-03-29", "fact_workitem.revenue": 31163}]
