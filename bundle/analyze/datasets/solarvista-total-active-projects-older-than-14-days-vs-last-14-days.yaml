@@ -24,9 +24,12 @@ metadata: |-
    }
 visualisation: |-
    {
-      "chartjs-chart": {
-         "chartType": "doughnut"
+    "chartjs-chart": {
+      "chartType": "doughnut",
+      "options": {
+        "plugins": { "datalabels": { "display": true } }
       }
+    }
    }
 query: |-
    select 
