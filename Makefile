@@ -16,11 +16,11 @@ venv:
 	source venv/bin/activate && pip install matatika &&	pip install matatika-iplotter && pip install bios
 datasets:
 	git clone https://github.com/Matatika/matatika-dataset-to-html.git
-	mv matatika-dataset-to-html/matatika_dataset_to_html.py bundle/analyze/datasets/
-	source venv/bin/activate && python bundle/analyze/datasets/matatika_dataset_to_html.py --datasets bundle/analyze/datasets/ --rawdata rawdata/ || python bundle/analyze/datasets/matatika_dataset_to_html.py --datasets bundle/analyze/datasets/ --rawdata rawdata/
+	mv matatika-dataset-to-html/matatika_dataset_to_html.py bundle/analyze/datasets/tap-solarvista/
+	source venv/bin/activate && python bundle/analyze/datasets/tap-solarvista/matatika_dataset_to_html.py --datasets bundle/analyze/datasets/tap-solarvista/ --rawdata rawdata/ || python bundle/analyze/datasets/tap-solarvista/matatika_dataset_to_html.py --datasets bundle/analyze/datasets/tap-solarvista/ --rawdata rawdata/
 	rm -rf matatika-dataset-to-html
-	rm bundle/analyze/datasets/matatika_dataset_to_html.py
+	rm bundle/analyze/datasets/tap-solarvista/matatika_dataset_to_html.py
 clean:
 	rm -rf matatika-dataset-to-html
-	rm bundle/analyze/datasets/matatika_dataset_to_html.py
+	rm bundle/analyze/datasets/tap-solarvista/matatika_dataset_to_html.py
 	
