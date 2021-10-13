@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: "Export Open Projects"
 questions: ‘Which projects are open?’
 description: |-

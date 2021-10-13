@@ -7,3 +7,5 @@
 # Converted HTML Datasets
 *.html
 html_charts/
+
+.project

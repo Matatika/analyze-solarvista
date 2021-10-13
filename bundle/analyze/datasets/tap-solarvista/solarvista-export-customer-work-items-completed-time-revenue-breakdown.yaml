@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: "Export Customers Work Items Completed, Working Times and Revenue Last 30 Days"
 questions: |-
   How many work items were completed for each customer over the last 30 day?

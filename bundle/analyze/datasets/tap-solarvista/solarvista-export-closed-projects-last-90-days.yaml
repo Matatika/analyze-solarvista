@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: "Export Projects Closed Last 90 Days"
 questions: ‘Which projects have been closed in the last 90 days?’
 description: |-

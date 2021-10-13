@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: "Export Engineers by Work Items Completed and Revenue Last 14 Days"
 questions: ‘How many work items completed and how much revenue per engineer over the last 14 day?’
 description: |-

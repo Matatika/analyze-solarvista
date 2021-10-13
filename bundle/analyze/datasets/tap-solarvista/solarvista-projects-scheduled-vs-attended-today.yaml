@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: "Projects Scheduled vs Attended Today"
 questions: 'How many projects have been scheduled and attended today?'
 description: |-

@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: Revenue By Week Last 12 Weeks
 questions: What is our revenue per week for the last 12 weeks?
 description: |-

@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: Time Working for each Customer Last 7 Days
 questions: How much time did our engineers spend working for each customer in the last 7 days?
 description: |-

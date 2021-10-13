@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: null
+source: tap-solarvista
 title: Revenue by Engineer Last 7 Days
 questions: How much revenue did each engineer make over the last 7 days?
 description: |-

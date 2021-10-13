@@ -1,6 +1,6 @@
 version: datasets/v0.2
 title: "Work Items Competed Yesterday"
-source: null
+source: tap-solarvista
 questions: ‘How many work items did we complete yesterday?’
 description: |-
    Number of work items completed yesterday.
