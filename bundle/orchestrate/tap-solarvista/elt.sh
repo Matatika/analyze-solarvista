@@ -30,6 +30,6 @@ meltano invoke dbt run-operation drop_users_stream_table || true
 
 # Run the elt, and dbt commands and tests
 meltano elt tap-solarvista target-postgres --transform=skip --job_id=$TARGET_POSTGRES_SCHEMA
-meltano invoke dbt snapshot
-meltano invoke dbt run --full-refresh
-meltano invoke dbt test
+meltano invoke dbt snapshot --select tap_solarvista
+meltano invoke dbt run -m tap_solarvista --full-refresh
+meltano invoke dbt test -m tap_solarvista
