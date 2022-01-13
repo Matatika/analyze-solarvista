@@ -13,5 +13,5 @@ venv:
 	python -m venv venv
 	source venv/bin/activate && pip install git+https://github.com/Matatika/matatika-dataset-converter.git
 datasets:
-	source venv/bin/activate && convert bundle/analyze/datasets/tap-solarvista/ rawdata/ bundle/analyze/datasets/tap-solarvista/output || convert bundle/analyze/datasets/tap-google-analytics/ rawdata/ bundle/analyze/datasets/tap-solarvista/output
+	source venv/bin/activate && convert bundle/analyze/datasets/tap-solarvista/ rawdata/ bundle/analyze/datasets/tap-solarvista/output || convert bundle/analyze/datasets/tap-solarvista/ rawdata/ bundle/analyze/datasets/tap-solarvista/output
 	
