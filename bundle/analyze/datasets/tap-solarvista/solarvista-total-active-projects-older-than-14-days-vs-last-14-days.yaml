@@ -1,7 +1,7 @@
 version: datasets/v0.2
 source: tap-solarvista
 title: "Active Projects Older Than 14 Days vs Last 14 Days"
-questions:
+questions: How many active projects were created in the last 14 days vs older ones still open?
 description: |-
    Active projects older than 14 days vs last 14 days
 
