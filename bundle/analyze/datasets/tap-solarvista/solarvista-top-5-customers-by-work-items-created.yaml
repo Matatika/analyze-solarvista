@@ -40,7 +40,7 @@ visualisation: |-
    }
 query: |-
    SELECT
-      MIN(name) "fact_work_item.customer_name"
+      MIN(name) "fact_workitem.customer_name"
       , COUNT(*) "fact_workitem.work_item_total"
    FROM fact_workitem fw
    LEFT JOIN dim_customer dc ON dc.customer_sk = fw.customer_sk
