@@ -45,7 +45,7 @@ query: |-
    FROM fact_workitem
    LEFT JOIN dim_user ON dim_user.users_sk = fact_workitem.users_sk
    WHERE current_stage = 'Closed'
-   AND last_modified::date = current_date - interval '7' day
+   AND last_modified::date = current_date - interval '7 day'
    GROUP BY user_id
    ORDER BY "fact_workitem.total_completed_wi" DESC 
    LIMIT 10;

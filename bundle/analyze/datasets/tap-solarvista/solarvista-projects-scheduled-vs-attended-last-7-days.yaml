@@ -42,9 +42,10 @@ visualisation: |-
 query: |-
    select
       date_day "vw_daily_projects.date"
-      , case when sum(total_scheduled) isnull then 0 else sum(total_scheduled) end "vw_daily_projects.scheduled"
-      , case when sum(total_attended) isnull then 0 else sum(total_attended) end "vw_daily_projects.attended"
+      , case when sum(total_scheduled) is null then 0 else sum(total_scheduled) end "vw_daily_projects.scheduled"
+      , case when sum(total_attended) is null then 0 else sum(total_attended) end "vw_daily_projects.attended"
    from vw_daily_projects
-   where date_day > current_date - interval '7' day
+   where date_day > current_date - interval '7 day'
    and date_day <= current_date
    group by date_day
+   order by date_day

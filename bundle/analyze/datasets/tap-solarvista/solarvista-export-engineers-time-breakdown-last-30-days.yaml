@@ -13,14 +13,14 @@ visualisation:
 query: |-
   SELECT
     display_name "Name"
-    , JUSTIFY_HOURS(SUM(schedule_travel_time_minutes) * interval '1' minute) "Scheduled Travel Time"
-    , JUSTIFY_HOURS(SUM(schedule_duration_minutes) * interval '1' minute) "Scheduled Working Time"
-    , JUSTIFY_HOURS(SUM(duration_hours) * interval '1' minute) "Working Time"
+    , round(SUM(schedule_travel_time_minutes) / 60, 2) "Scheduled Travel Time Hours"
+    , round(SUM(schedule_duration_minutes) / 60, 2) "Scheduled Working Time Hours"
+    , SUM(duration_hours) "Working Time"
   FROM fact_workitem fw 
   LEFT JOIN dim_user du ON du.users_sk = fw.users_sk
   WHERE current_stage = 'Closed'
-  AND report_date >= current_date - interval '30' day
+  AND report_date >= current_date - interval '30 day'
   AND report_date < current_date
-  AND (duration_hours NOTNULL OR schedule_duration_minutes NOTNULL OR schedule_travel_time_minutes NOTNULL)
+  AND (duration_hours is not null OR schedule_duration_minutes is not null OR schedule_travel_time_minutes is not null)
   GROUP BY display_name
   ORDER BY "Name" ASC

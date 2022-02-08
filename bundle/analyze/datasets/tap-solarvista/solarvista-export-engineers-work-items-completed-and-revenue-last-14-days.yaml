@@ -18,7 +18,7 @@ query: |-
   FROM fact_workitem fw 
   LEFT JOIN dim_user du on du.users_sk = fw.users_sk
   WHERE current_stage = 'Closed'
-  AND report_date >= current_date - interval '14' day
+  AND report_date >= current_date - interval '14 day'
   AND report_date < current_date
   GROUP BY display_name
   ORDER BY "Work Items Completed" DESC

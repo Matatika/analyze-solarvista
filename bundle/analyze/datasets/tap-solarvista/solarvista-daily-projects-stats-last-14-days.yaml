@@ -35,7 +35,7 @@ query: |-
     ,COALESCE(SUM("vw_daily_projects"."total_closed"),0) "vw_daily_projects.total_closed"
     ,COALESCE(SUM("vw_daily_projects"."total_open"),0) "vw_daily_projects.total_open"
     FROM "vw_daily_projects" "vw_daily_projects"
-    WHERE "vw_daily_projects"."report_date" > current_date - interval '15' day  
+    WHERE "vw_daily_projects"."report_date" > current_date - interval '15 day'  
     AND vw_daily_projects.report_date < current_date
     GROUP BY "vw_daily_projects.report_year","vw_daily_projects.report_month","vw_daily_projects.report_day"
     ORDER BY "vw_daily_projects.report_year" ASC,
