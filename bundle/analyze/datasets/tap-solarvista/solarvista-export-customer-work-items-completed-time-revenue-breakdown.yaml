@@ -17,16 +17,16 @@ query: |-
   SELECT 
     name "Customer Name"
     , COUNT(*) "Work Items"
-    , JUSTIFY_HOURS(SUM(schedule_duration_minutes) * interval '1' minute) "Total Scheduled Working Hours"
-    , JUSTIFY_HOURS(SUM(duration_hours) * interval '1' minute) "Total Working Hours"
-    , JUSTIFY_HOURS(ROUND(SUM(duration_hours)/COUNT(*)) * interval '1' minute) "Average Working Hours Per Work Item"
+    , ROUND(SUM(schedule_duration_minutes) / 60, 2) "Total Scheduled Working Hours"
+    , ROUND(SUM(duration_hours) / 60, 2) "Total Working Hours"
+    , ROUND((SUM(duration_hours) / 60) / COUNT(*), 2) "Average Working Hours Per Work Item"
     , SUM(charge) "Total Revenue"
-    , ROUND(SUM(charge)/COUNT(*)) "Average Revenue Per Work Item"
+    , ROUND(SUM(charge) / COUNT(*), 2) "Average Revenue Per Work Item"
   FROM fact_workitem fw 
   LEFT JOIN dim_customer dc ON dc.customer_sk = fw.customer_sk
   WHERE current_stage = 'Closed'
-  AND report_date >= current_date - interval '30' day
+  AND report_date >= current_date - interval '30 day'
   AND report_date < current_date
-  AND (schedule_duration_minutes NOTNULL or duration_hours NOTNULL or charge NOTNULL)
+  AND (schedule_duration_minutes is not null or duration_hours is not null or charge is not null)
   GROUP BY name
   ORDER BY "Customer Name"

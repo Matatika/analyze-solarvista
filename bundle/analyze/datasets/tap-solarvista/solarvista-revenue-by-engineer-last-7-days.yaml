@@ -45,8 +45,7 @@ query: |-
    FROM fact_workitem fw
    LEFT JOIN dim_user du ON du.users_sk = fw.users_sk
    WHERE charge > 0
-   AND report_date >= current_date - interval '7' day
+   AND report_date >= current_date - interval '7 day'
    AND report_date < current_date
    GROUP BY display_name
    ORDER BY "fact_workitem.revenue" DESC
-

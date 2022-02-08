@@ -1,7 +1,7 @@
 version: datasets/v0.2
 source: tap-solarvista
 title: "Projects Scheduled vs Attended Today"
-questions: 'How many projects have been scheduled and attended today?'
+questions: "How many projects have been scheduled and attended today?"
 description: |-
   Projects scheduled vs attended today.
 
@@ -30,9 +30,8 @@ visualisation: |-
   }
 query: |-
   select
-    case when sum(total_scheduled) isnull then 0 else sum(total_scheduled) end "vw_daily_projects.scheduled"
-    , case when sum(total_attended) isnull then 0 else sum(total_attended) end "vw_daily_projects.attended"
+    case when sum(total_scheduled) is null then 0 else sum(total_scheduled) end "vw_daily_projects.scheduled"
+    , case when sum(total_attended) is null then 0 else sum(total_attended) end "vw_daily_projects.attended"
   from vw_daily_projects
   where date_day = current_date
   group by date_day
-

@@ -20,5 +20,5 @@ query: |-
     , dim_project.closedon "ClosedOn"
   FROM dim_project
   WHERE dim_project.status = 'Closed'
-  AND dim_project.closedon > current_date - interval '90' day
+  AND dim_project.closedon > current_date - interval '90 day'
   ORDER BY dim_project.closedon

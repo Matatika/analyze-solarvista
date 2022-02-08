@@ -45,9 +45,7 @@ query: |-
    FROM fact_workitem fw
    LEFT JOIN dim_customer dc ON dc.customer_sk = fw.customer_sk
    WHERE duration_hours > 0
-   AND report_date >= current_date - interval '7' day
+   AND report_date >= current_date - interval '7 day'
    AND report_date < current_date
    GROUP BY name
    ORDER BY "fact_workitem.work_hours" DESC
-
-
