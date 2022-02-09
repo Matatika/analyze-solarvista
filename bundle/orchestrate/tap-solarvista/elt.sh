@@ -24,6 +24,6 @@ meltano invoke dbt deps
 meltano invoke dbt run-operation solarvista_drop_users_stream_table || true
 
 # Run the elt, and dbt commands and tests
-meltano elt "$EXTRACTOR" "$EXTRACTOR" --transform=skip --job_id=$MELTANO_JOB_ID
+meltano elt "$EXTRACTOR" "$LOADER" --transform=skip --job_id=$MELTANO_JOB_ID
 meltano invoke dbt snapshot --select tap_solarvista
 meltano invoke dbt run -m tap_solarvista --full-refresh
