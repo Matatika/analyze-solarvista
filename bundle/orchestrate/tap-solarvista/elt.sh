@@ -9,6 +9,9 @@ meltano install loader "$LOADER"
 meltano install transform "$EXTRACTOR"
 meltano install transformer dbt
 
+# Temporary fix for markdown dependencies issue: https://github.com/dbt-labs/dbt-core/issues/4745
+.meltano/transformers/dbt/venv/bin/pip3 install --force-reinstall MarkupSafe==2.0.1
+
 # Store meltano config and tap state in database
 if [ $DBT_TARGET = "postgres" ]; then
     export MELTANO_DATABASE_URI=postgresql://${TARGET_POSTGRES_USER}:${TARGET_POSTGRES_PASSWORD}@${TARGET_POSTGRES_HOST}:${TARGET_POSTGRES_PORT}/${TARGET_POSTGRES_DBNAME}?options=-csearch_path%3Dpublic
