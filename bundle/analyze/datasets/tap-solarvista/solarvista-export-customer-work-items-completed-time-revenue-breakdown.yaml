@@ -17,11 +17,11 @@ query: |-
   SELECT 
     name "Customer Name"
     , COUNT(*) "Work Items"
-    , ROUND(SUM(schedule_duration_minutes) / 60, 2) "Total Scheduled Working Hours"
-    , ROUND(SUM(duration_hours) / 60, 2) "Total Working Hours"
-    , ROUND((SUM(duration_hours) / 60) / COUNT(*), 2) "Average Working Hours Per Work Item"
+    , ROUND(SUM(cast(schedule_duration_minutes as numeric)) / 60, 2) "Total Scheduled Working Hours"
+    , ROUND(SUM(cast(duration_hours as numeric)) / 60, 2) "Total Working Hours"
+    , ROUND((SUM(cast(duration_hours as numeric)) / 60) / COUNT(*), 2) "Average Working Hours Per Work Item"
     , SUM(charge) "Total Revenue"
-    , ROUND(SUM(charge) / COUNT(*), 2) "Average Revenue Per Work Item"
+    , ROUND(SUM(cast(charge as numeric)) / COUNT(*), 2) "Average Revenue Per Work Item"
   FROM fact_workitem fw 
   LEFT JOIN dim_customer dc ON dc.customer_sk = fw.customer_sk
   WHERE current_stage = 'Closed'
