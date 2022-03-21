@@ -7,5 +7,11 @@
 # Converted HTML Datasets
 *.html
 html_charts/
+output/
+
+# Python files
+*.egg-info
+build
+__pycache__
 
 .project
