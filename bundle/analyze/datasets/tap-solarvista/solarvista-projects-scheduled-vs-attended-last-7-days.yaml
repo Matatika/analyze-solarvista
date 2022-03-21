@@ -26,15 +26,12 @@ visualisation: |-
          "chartType": "bar",
          "options": {
             "scales": {
-               "yAxes": [{
-                  "scaleLabel": {
-                     "display": true,
-                     "labelString": "Projects"
+               "y": {
+                  "title": {
+                     "text": "Projects"
                   },
-                  "ticks": {
-                     "beginAtZero": true
-                  }
-               }]
+                  "beginAtZero": true
+               }
             }
          }
       }

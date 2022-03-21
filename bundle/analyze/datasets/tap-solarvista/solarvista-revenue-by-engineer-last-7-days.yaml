@@ -25,15 +25,14 @@ visualisation: |-
          "chartType": "bar",
          "options": {
             "scales": {
-               "yAxes": [{
-                  "scaleLabel": {
-                     "display": true,
-                     "labelString": "Revenue"
+               "y": {
+                  "title": {
+                     "text": "Revenue"
                   },
                   "ticks": {
                      "beginAtZero": true
                   }
-               }]
+               }
             }
          }
       }

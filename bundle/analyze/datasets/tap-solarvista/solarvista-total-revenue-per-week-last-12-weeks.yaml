@@ -25,21 +25,19 @@ visualisation: |-
          "chartType": "bar",
          "options": {
             "scales": {
-               "yAxes": [{
-                  "scaleLabel": {
-                     "display": true,
-                     "labelString": "Revenue"
+               "y": {
+                  "title": {
+                     "text": "Revenue"
                   },
                   "ticks": {
                      "beginAtZero": true
                   }
-               }],
-               "xAxes": [{
-                  "scaleLabel": {
-                     "display": true,
-                     "labelString": "Week Start Date"
+               },
+               "x": {
+                  "title": {
+                     "text": "Week Start Date"
                   }
-               }]
+               }
             }
          }
       }
@@ -54,4 +52,3 @@ query: |-
    GROUP BY week_key
    ORDER BY MIN(week_key) DESC
    LIMIT 12;
-

@@ -25,15 +25,14 @@ visualisation: |-
          "chartType": "bar",
          "options": {
             "scales": {
-               "yAxes": [{
-                  "scaleLabel": {
-                     "display": true,
-                     "labelString": "Working Hours"
+               "y": {
+                  "title": {
+                     "text": "Working Hours"
                   },
                   "ticks": {
                      "beginAtZero": true
                   }
-               }]
+               }
             }
          }
       }

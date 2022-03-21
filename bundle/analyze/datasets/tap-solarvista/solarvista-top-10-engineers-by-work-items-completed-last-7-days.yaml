@@ -25,15 +25,14 @@ visualisation: |-
          "chartType": "bar",
          "options": {
             "scales": {
-               "yAxes": [{
-                  "scaleLabel": {
-                     "display": true,
-                     "labelString": "Completed Work Items"
+               "y": {
+                  "title": {
+                     "text": "Completed Work Items"
                   },
                   "ticks": {
                      "beginAtZero": true
                   }
-               }]
+               }
             }
          }
       }
