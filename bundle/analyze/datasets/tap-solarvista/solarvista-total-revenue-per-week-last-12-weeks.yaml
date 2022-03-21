@@ -27,7 +27,8 @@ visualisation: |-
             "scales": {
                "y": {
                   "title": {
-                     "text": "Revenue"
+                     "text": "Revenue",
+                     "display": true
                   },
                   "ticks": {
                      "beginAtZero": true
@@ -35,7 +36,8 @@ visualisation: |-
                },
                "x": {
                   "title": {
-                     "text": "Week Start Date"
+                     "text": "Week Start Date",
+                     "display": true
                   }
                }
             }

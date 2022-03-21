@@ -27,7 +27,8 @@ visualisation: |-
             "scales": {
                "y": {
                   "title": {
-                     "text": "Working Hours"
+                     "text": "Working Hours",
+                     "display": true
                   },
                   "ticks": {
                      "beginAtZero": true

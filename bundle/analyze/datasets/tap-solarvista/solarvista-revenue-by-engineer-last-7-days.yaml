@@ -27,7 +27,8 @@ visualisation: |-
             "scales": {
                "y": {
                   "title": {
-                     "text": "Revenue"
+                     "text": "Revenue",
+                     "display": true
                   },
                   "ticks": {
                      "beginAtZero": true

@@ -28,7 +28,8 @@ visualisation: |-
             "scales": {
                "y": {
                   "title": {
-                     "text": "Projects"
+                     "text": "Projects",
+                     "display": true
                   },
                   "beginAtZero": true
                }

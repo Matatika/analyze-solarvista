@@ -27,7 +27,8 @@ visualisation: |-
             "scales": {
                "y": {
                   "title": {
-                     "text": "Completed Work Items"
+                     "text": "Completed Work Items",
+                     "display": true
                   },
                   "ticks": {
                      "beginAtZero": true
